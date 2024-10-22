@@ -1,0 +1,20 @@
+[package]
+name = "zer0xdump"
+version = "0.1.3"
+edition = "2021"
+
+authors = ["Maurice J Niessen <info@mjniessen.com>"]
+description = "Dumps binary files in colors"
+documentation = "https://mjniessen.com/zer0xdump"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.4.16", features = ["cargo", "unicode"] }
+
+[profile.release]
+strip = true      # Automatically strip symbols from binary
+debug = false     # No debug info at all
+opt-level = 3     # All optimization (0 for no, 1 for basic, 2 for some, 3 for all, "s" for size, "z" for size & no loop vector)
+lto = true        # Enable link time optimization
+codegen-units = 1 # Maximize size reduction optimization
